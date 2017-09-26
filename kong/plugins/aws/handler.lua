@@ -35,7 +35,7 @@ function plugin:access(plugin_conf)
     canonical_querystring = ngx.var.args,
     headers = headers,
     method = ngx.req.get_method(),
-    path = ngx.var.uri,
+    path = string.gsub(ngx.ctx.upstream_url, "^https?://[a-z0-9.-]+", ""),
     port = ngx.var.port,
   }
 
