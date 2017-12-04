@@ -1,10 +1,10 @@
 package = "kong-plugin-aws"
-version = "0.1.0-1"
+version = "1.0.0"
 
 supported_platforms = {"linux", "macosx"}
 source = {
-  url = "git://github.com/mrsaints/kong-plugin-aws",
-  tag = "0.1.0"
+  url = "git://github.com/articulate/kong-plugin-aws",
+  tag = "1.0.0"
 }
 
 description = {
@@ -15,7 +15,7 @@ description = {
 dependencies = {
   "lua-resty-http == 0.08",
   "luacrypto == 0.3.2",
-  "penlight == 1.4.1",
+  "penlight == 1.5.4-1",
 }
 
 local pluginName = "aws"
