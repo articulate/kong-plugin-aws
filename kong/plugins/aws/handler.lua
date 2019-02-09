@@ -19,6 +19,8 @@ function plugin:access(plugin_conf)
   -- a port, as this is what Kong uses.
   headers["host"] = ngx.var.host
 
+  headers["X-Articulate-Authorization"] = incoming_headers["Authorization"]
+
   -- Proxy the content headers only as they are AWS requirements.
   -- They are also likely the only headers to remain consistent
   -- between Client -> Kong -> AWS.
