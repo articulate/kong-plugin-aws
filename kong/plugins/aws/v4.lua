@@ -34,7 +34,7 @@ local function percent_encode(char)
 end
 
 local function urldecode(str)
-  return (str:gsub("%%(%x%x)", function(c) 
+  return (str:gsub("%%(%x%x)", function(c)
     return string.char(tonumber(c, 16))
   end))
 end
@@ -120,8 +120,10 @@ local function prepare_awsv4_request(tbl)
   -- Use existing `Host` header if it exists, otherwise, construct an AWS host
   if req_headers["host"] then
     host = req_headers["host"]
+    print("constructing host from existing header: '" .. host .. "'")
   else
     host = service .. "." .. region .. "." .. domain
+    print("constructing host from computed AWS values: '" .. host .. "'")
   end
 
   local host_header do -- If the "standard" port is not in use, the port should be added to the Host header
