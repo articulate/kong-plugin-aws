@@ -1,4 +1,4 @@
-FROM kong:0.10.2
+FROM kong:1.0.3
 
 LABEL org.label-schema.vcs-url="https://github.com/MrSaints/kong-plugin-aws" \
       maintainer="Ian L. <os@fyianlai.com>"

@@ -1,6 +1,4 @@
 local plugin = require("kong.plugins.base_plugin"):extend()
-local responses = require "kong.tools.responses"
-
 local aws_v4 = require "kong.plugins.aws.v4"
 
 function plugin:new()
@@ -30,7 +28,6 @@ function plugin:access(plugin_conf)
     service = plugin_conf.aws_service,
     access_key = plugin_conf.aws_key,
     secret_key = plugin_conf.aws_secret,
-    timestamp = plugin_conf.timestamp,
     body = ngx.req.get_body_data(),
     canonical_querystring = ngx.var.args,
     headers = headers,
@@ -41,7 +38,8 @@ function plugin:access(plugin_conf)
 
   local request, err = aws_v4(opts)
   if err then
-    return responses.send_HTTP_INTERNAL_SERVER_ERROR(err)
+    kong.log.err(err)
+    return kong.response.exit(500, "Internal Server Error")
   end
 
   for key, val in pairs(request.headers) do

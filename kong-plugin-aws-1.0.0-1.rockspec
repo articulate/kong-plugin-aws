@@ -1,10 +1,10 @@
 package = "kong-plugin-aws"
-version = "1.0.0-1"
+version = "2.0.0-1"
 
 supported_platforms = {"linux", "macosx"}
 source = {
   url = "git://github.com/articulate/kong-plugin-aws",
-  tag = "1.0.0"
+  tag = "2.0.0"
 }
 
 description = {
