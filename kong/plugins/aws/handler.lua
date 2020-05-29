@@ -1,6 +1,4 @@
 local plugin = require("kong.plugins.base_plugin"):extend()
-local responses = require "kong.tools.responses"
-
 local aws_v4 = require "kong.plugins.aws.v4"
 
 function plugin:new()
@@ -41,7 +39,8 @@ function plugin:access(plugin_conf)
 
   local request, err = aws_v4(opts)
   if err then
-    return responses.send_HTTP_INTERNAL_SERVER_ERROR(err)
+    kong.log.err(err)
+    return kong.response.exit(500, "Internal Server Error")
   end
 
   for key, val in pairs(request.headers) do
