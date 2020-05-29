@@ -28,7 +28,6 @@ function plugin:access(plugin_conf)
     service = plugin_conf.aws_service,
     access_key = plugin_conf.aws_key,
     secret_key = plugin_conf.aws_secret,
-    timestamp = plugin_conf.timestamp,
     body = ngx.req.get_body_data(),
     canonical_querystring = ngx.var.args,
     headers = headers,

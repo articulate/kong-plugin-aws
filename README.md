@@ -31,7 +31,6 @@ Field | Type | Description
 `aws_service` | `string` | The service namespace that identifies the AWS product (for example, Amazon S3, IAM, or Amazon RDS). For a list of namespaces, see [AWS Service Namespaces][service-namespaces].
 `aws_key` | `string` | The AWS key credential to be used when signing a request.
 `aws_secret` | `string` | The AWS secret credential to be used when signing a request.
-`timestamp` | `timestamp` | (Optional) This is used for signing a request with the current datetime. It is mostly used for testing, so leave this alone unless you know what you are doing.
 
 If your `aws_key` or `aws_secret` contains special characters, ensure that they are URL percent encoded (e.g. `+` -> `%2B`).
 
